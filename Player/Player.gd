@@ -3,6 +3,14 @@ extends KinematicBody
 const SPEED = 20
 const GRAVITY = 1
 
+func _ready():
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+
+func _input(event):
+	if event is InputEventMouseMotion:
+		$Head.rotate_y(deg2rad(event.relative.x * -0.3))
+		$Head/Eyes.rotate_x(deg2rad(event.relative.y * -0.3))
+		
 func _process(delta):
 	var velocity = Vector3.ZERO
 	var direction = $Head.get_global_transform().basis
