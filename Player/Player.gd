@@ -14,10 +14,17 @@ func _input(event):
 func _process(delta):
 	var velocity = Vector3.ZERO
 	var direction = $Head.get_global_transform().basis
-
+	var target = null
+	
 	if Input.is_action_pressed("forward"): velocity -= direction.z
 	if Input.is_action_pressed("backward"): velocity += direction.z
 	if Input.is_action_pressed("right"): velocity += direction.x
 	if Input.is_action_pressed("left"): velocity -= direction.x
+	if Input.is_action_just_pressed("shoot"):
+		get_tree().call_group('Shotgun','shoot_animation')
+		target = $Head/Eyes/RayCast.get_collider()
+		print(target)
+		
+	velocity.y -= GRAVITY
 	
 	move_and_slide(velocity.normalized() * SPEED)

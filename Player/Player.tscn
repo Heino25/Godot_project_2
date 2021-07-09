@@ -1,7 +1,6 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Player/Player.gd" type="Script" id=1]
-[ext_resource path="res://VegetableHunter_Assets/Shotgun/Shotgun/Shotgun.fbx" type="PackedScene" id=2]
 [ext_resource path="res://Player/Shotgun.tscn" type="PackedScene" id=3]
 [ext_resource path="res://VegetableHunter_Assets/Shotgun/Shotgun/crosshair009.png" type="Texture" id=4]
 
@@ -23,10 +22,18 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0761157, 0.271943 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.64706, 0 )
 current = true
 
-[node name="Shotgun" parent="Head/Eyes" instance=ExtResource( 3 )]
+[node name="RayCast" type="RayCast" parent="Head/Eyes"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.076, -1.427 )
+enabled = true
+cast_to = Vector3( 0, 0, -50 )
 
-[node name="Shotgun2" parent="Head/Eyes" instance=ExtResource( 2 )]
-transform = Transform( 0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0.191228, -0.484335, -0.722206 )
+[node name="Shotgun" parent="Head/Eyes" instance=ExtResource( 3 )]
+transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.448751, 0, -0.443504 )
+script = null
+
+[node name="Shotgun2" parent="Head/Eyes" instance=ExtResource( 3 )]
+transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -0.402406, 0, -0.485968 )
+script = null
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
