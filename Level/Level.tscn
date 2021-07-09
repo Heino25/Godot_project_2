@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Trees/Tree2.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Trees/Tree3.tscn" type="PackedScene" id=2]
@@ -7,11 +7,13 @@
 [ext_resource path="res://Trees/Tree4.tscn" type="PackedScene" id=5]
 [ext_resource path="res://VegetableHunter_Assets/World/grass_leafs.glb" type="PackedScene" id=6]
 [ext_resource path="res://Trees/Tree1.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Level/Level.gd" type="Script" id=8]
 
 [sub_resource type="SpatialMaterial" id=1]
 albedo_color = Color( 0.188235, 0.760784, 0.152941, 1 )
 
 [node name="Level" type="Spatial"]
+script = ExtResource( 8 )
 
 [node name="Trees" type="Spatial" parent="."]
 
@@ -150,3 +152,47 @@ depth = 0.1
 
 [node name="Player" parent="." instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.066958, -0.101676, -0.0796179 )
+
+[node name="Timers" type="Node" parent="."]
+
+[node name="Timer1" type="Timer" parent="Timers"]
+autostart = true
+
+[node name="Timer2" type="Timer" parent="Timers"]
+wait_time = 1.2
+autostart = true
+
+[node name="Timer3" type="Timer" parent="Timers"]
+wait_time = 1.6
+autostart = true
+
+[node name="Timer4" type="Timer" parent="Timers"]
+wait_time = 1.5
+autostart = true
+
+[node name="Timer5" type="Timer" parent="Timers"]
+wait_time = 2.0
+autostart = true
+
+[node name="Positions" type="Node" parent="."]
+
+[node name="Start1" type="Position3D" parent="Positions"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.243225, 4.98857, -6.57172 )
+
+[node name="Start2" type="Position3D" parent="Positions"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.14655, 4.98857, -1.80521 )
+
+[node name="Start3" type="Position3D" parent="Positions"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.67729, 4.98857, -3.38327 )
+
+[node name="Start4" type="Position3D" parent="Positions"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10.2657, 4.98857, -3.84123 )
+
+[node name="Start5" type="Position3D" parent="Positions"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.41511, 4.98857, -6.57172 )
+
+[connection signal="timeout" from="Timers/Timer1" to="." method="_on_Timer1_timeout"]
+[connection signal="timeout" from="Timers/Timer2" to="." method="_on_Timer2_timeout"]
+[connection signal="timeout" from="Timers/Timer3" to="." method="_on_Timer3_timeout"]
+[connection signal="timeout" from="Timers/Timer4" to="." method="_on_Timer4_timeout"]
+[connection signal="timeout" from="Timers/Timer5" to="." method="_on_Timer5_timeout"]
